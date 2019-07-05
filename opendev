@@ -1,0 +1,28 @@
+#!/bin/bash
+
+laradock=~/Web/services/laradock
+api=~/Web/projects/csb/api
+spa=~/Web/projects/csb/spa
+cd $laradock && docker-compose up -d nginx mysql phpmyadmin workspace mongo && cd -
+tmux new-session -s dev -n "start" \; \
+split-window -v -p 22 \; send-keys 'htop' C-m \; \
+select-pane -t 1 \; split-window -h -p 34 \; \
+select-pane -t 1 \; new-window \; renamew $(basename $laradock)\; \
+send-keys "cd $laradock && clear " C-m \; \
+split-window -h -p 34 \; \
+send-keys "cd $laradock && clear " C-m \; \
+split-window -v \; \
+send-keys "cd $laradock && clear " C-m \; \
+select-pane -t 1 \; new-window \; renamew $(basename $api)\; \
+send-keys "cd $api && clear " C-m \; \
+split-window -h -p 34 \; \
+send-keys "cd $api && clear " C-m \; \
+split-window -v \; \
+send-keys "cd $api && clear " C-m \; \
+select-pane -t 1 \; new-window \; renamew $(basename $spa)\; \
+send-keys "cd $spa && clear " C-m \; \
+split-window -h -p 34 \; \
+send-keys "cd $spa && clear " C-m \; \
+split-window -v \; \
+send-keys "cd $spa && clear && npm run serve" C-m \; \
+select-pane -t 1 \;
