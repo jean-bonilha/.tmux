@@ -8,11 +8,11 @@ tmux new-session -s dev -n "start" \; \
 split-window -v -p 22 \; send-keys 'htop' C-m \; \
 select-pane -t 1 \; split-window -h -p 34 \; \
 select-pane -t 1 \; new-window \; renamew $(basename $laradock)\; \
-send-keys "cd $laradock && clear " C-m \; \
+send-keys "cd $laradock && clear && docker-compose exec --user=laradock workspace bash" C-m \; \
 split-window -h -p 34 \; \
-send-keys "cd $laradock && clear " C-m \; \
+send-keys "cd $laradock && clear && docker-compose exec mongo bash" C-m \; \
 split-window -v \; \
-send-keys "cd $laradock && clear " C-m \; \
+send-keys "cd $laradock && clear && docker-compose exec mysql bash" C-m \; \
 select-pane -t 1 \; new-window \; renamew $(basename $api)\; \
 send-keys "cd $api && clear " C-m \; \
 split-window -h -p 34 \; \
