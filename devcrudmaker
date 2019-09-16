@@ -1,0 +1,27 @@
+#!/bin/bash
+
+vuecrudmaker=~/Web/projects/vue-crudmaker
+crudmakeradmin=~/Web/projects/crudmaker-admin
+dbschema2json=~/Web/projects/dbschema2json
+tmux new-session -s dev -n "start" \; \
+split-window -v -p 22 \; send-keys 'htop' C-m \; \
+select-pane -t 1 \; split-window -h -p 34 \; \
+select-pane -t 1 \; new-window \; renamew $(basename $vuecrudmaker)\; \
+send-keys "cd $vuecrudmaker && clear " C-m \; \
+split-window -h -p 34 \; \
+send-keys "cd $vuecrudmaker && clear " C-m \; \
+split-window -v \; \
+send-keys "cd $vuecrudmaker && clear " C-m \; \
+select-pane -t 1 \; new-window \; renamew $(basename $crudmakeradmin)\; \
+send-keys "cd $crudmakeradmin && clear " C-m \; \
+split-window -h -p 34 \; \
+send-keys "cd $crudmakeradmin && clear " C-m \; \
+split-window -v \; \
+send-keys "cd $crudmakeradmin && clear && npm run serve" C-m \; \
+select-pane -t 1 \; new-window \; renamew $(basename $dbschema2json)\; \
+send-keys "cd $dbschema2json && clear " C-m \; \
+split-window -h -p 34 \; \
+send-keys "cd $dbschema2json && clear " C-m \; \
+split-window -v \; \
+send-keys "cd $dbschema2json && clear " C-m \; \
+select-pane -t 1 \;
