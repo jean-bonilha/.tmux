@@ -19,7 +19,7 @@ existing `~/.tmux.conf` first)
 
 ```
 $ cd
-$ git clone https://github.com/gpakosz/.tmux.git
+$ git clone https://github.com/jean-bonilha/.tmux.git
 $ ln -s -f .tmux/.tmux.conf
 $ cp .tmux/.tmux.conf.local .
 ```
@@ -172,7 +172,7 @@ This configuration uses the following bindings:
 
 Additionally, `copy-mode-vi` matches [my own Vim configuration][]
 
-[my own Vim configuration]: https://github.com/gpakosz/.vim.git
+[my own Vim configuration]: https://github.com/jean-bonilha/.vim.git
 
 Bindings for `copy-mode-vi`:
 
